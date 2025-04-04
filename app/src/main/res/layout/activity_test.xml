@@ -5,10 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    android:backgroundTintMode="multiply"
+    android:foregroundTint="#4B4B4B"
+    android:foregroundTintMode="add"
     tools:context=".TestActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:backgroundTint="#686868">
 
         <LinearLayout
             android:id="@+id/topLayout"
@@ -47,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/bottomLayout"
-            android:layout_below="@id/topLayout">
+            android:layout_below="@id/topLayout"
+            android:backgroundTint="#282828">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,15 +64,17 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/hellgrau"
                     android:scaleY="1">
 
                     <Button
+                        android:id="@+id/button5"
                         android:layout_width="278dp"
                         android:layout_height="72dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
                         android:backgroundTint="#6D1805"
-                        android:text="DEUTSCH"
+                        android:text="DEUTSCH  |  R040  |  Günther"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:text="08:00-\n09:30"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button11"
+                        app:layout_constraintEnd_toStartOf="@+id/button5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -85,6 +94,7 @@
                     android:scaleY="1">
 
                     <Button
+                        android:id="@+id/button6"
                         android:layout_width="278dp"
                         android:layout_height="72dp"
                         android:layout_marginTop="4dp"
@@ -99,7 +109,36 @@
                         android:layout_height="wrap_content"
                         android:text="08:00-\n09:30"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button11"
+                        app:layout_constraintEnd_toStartOf="@+id/button6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/testFach"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/hellgrau"
+                    android:scaleY="1">
+
+                    <Button
+                        android:id="@+id/button7"
+                        android:layout_width="278dp"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#6D1805"
+                        android:text="DEUTSCH"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="08:00-\n09:30"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/button7"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -110,6 +149,7 @@
                     android:scaleY="1">
 
                     <Button
+                        android:id="@+id/button8"
                         android:layout_width="278dp"
                         android:layout_height="72dp"
                         android:layout_marginTop="4dp"
@@ -124,7 +164,34 @@
                         android:layout_height="wrap_content"
                         android:text="08:00-\n09:30"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button11"
+                        app:layout_constraintEnd_toStartOf="@+id/button8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/hellgrau"
+                    android:scaleY="1">
+
+                    <Button
+                        android:id="@+id/button9"
+                        android:layout_width="278dp"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#6D1805"
+                        android:text="DEUTSCH"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="08:00-\n09:30"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/button9"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -135,6 +202,7 @@
                     android:scaleY="1">
 
                     <Button
+                        android:id="@+id/button10"
                         android:layout_width="278dp"
                         android:layout_height="72dp"
                         android:layout_marginTop="4dp"
@@ -149,57 +217,7 @@
                         android:layout_height="wrap_content"
                         android:text="08:00-\n09:30"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button11"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleY="1">
-
-                    <Button
-                        android:layout_width="278dp"
-                        android:layout_height="72dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="8dp"
-                        android:backgroundTint="#6D1805"
-                        android:text="DEUTSCH"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="08:00-\n09:30"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button11"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleY="1">
-
-                    <Button
-                        android:layout_width="278dp"
-                        android:layout_height="72dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="8dp"
-                        android:backgroundTint="#6D1805"
-                        android:text="DEUTSCH"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="08:00-\n09:30"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button11"
+                        app:layout_constraintEnd_toStartOf="@+id/button10"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
