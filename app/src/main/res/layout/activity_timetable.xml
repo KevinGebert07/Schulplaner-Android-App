@@ -9,7 +9,7 @@
     android:backgroundTintMode="multiply"
     android:foregroundTint="#4B4B4B"
     android:foregroundTintMode="add"
-    tools:context=".TestActivity">
+    tools:context=".TimetableActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
