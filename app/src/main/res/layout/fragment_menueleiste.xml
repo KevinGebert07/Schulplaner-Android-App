@@ -25,6 +25,13 @@
         android:src="@drawable/aufgaben_ikon_grau"
         android:translationY="-18dp" />
 
+    <Button
+        android:id="@+id/profil"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_weight="1"
+        android:text="KEK" />
+
     <ImageView
         android:id="@+id/grades"
         android:layout_width="wrap_content"

@@ -59,46 +59,26 @@ public class Menueleiste extends Fragment{
 
     }
 
+    //Methode wird beim Laden der Activity, in dem das Fragment ist ausgelöst
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menueleiste, container, false);
+
+        //Deklarieren der Buttons im Fragment
         ImageView timetable = (ImageView) view.findViewById(R.id.timetable);
         ImageView tasks = (ImageView) view.findViewById(R.id.tasks);
         ImageView grades = (ImageView) view.findViewById(R.id.grades);
         ImageView settings = (ImageView) view.findViewById(R.id.settings);
+        Button profile = (Button) view.findViewById(R.id.profil);
 
+        //Setzen der OnClickListener der Buttons zum Wechseln der Activity
         timetable.setOnClickListener(v -> startActivity(new Intent(getActivity(), TimetableActivity.class)));
         tasks.setOnClickListener(v -> startActivity(new Intent(getActivity(), TasksActivity.class)));
         grades.setOnClickListener(v -> startActivity(new Intent(getActivity(), GradesActivity.class)));
         settings.setOnClickListener(v -> startActivity(new Intent(getActivity(), SettingsActivity.class)));
+        profile.setOnClickListener(v -> startActivity(new Intent(getActivity(), ProfileActivity.class)));
 
         return view;
     }
-
-
-    public void changeToTimetable (View v){
-        // Wechsel der Activity zur Stundenplan Activity
-        Intent i = new Intent (getActivity(), TimetableActivity.class);
-        this.getActivity().startActivity(i);
-    }
-
-    public void changeToTasks (View v){
-        // Wechsel der Activity zur Aufgaben Activity
-        Intent i = new Intent (this.getActivity(), TasksActivity.class);
-        startActivity(i);
-    }
-
-    public void changeToGrades (View v){
-        // Wechsel der Activity zur Noten Acitity
-        Intent i = new Intent (this.getActivity(), GradesActivity.class);
-        startActivity(i);
-    }
-
-    public void changeToSettiings (View v){
-        // Wechsel der Activity zur Einsetllungs Activity
-        Intent i = new Intent (this.getActivity(), SettingsActivity.class);
-        startActivity(i);
-    }
-
 }
