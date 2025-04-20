@@ -11,8 +11,14 @@ public class Fach {
         this.farbe = farbe;
     }
 
-    public double notendurchschnittBerechnen (){
+    public double berechneFachDurchschnitt (){
         return 0.0;
+    }
+    public double berechneFachDurchschnitt(String halbjahr){
+        return 1.0;
+    }
+    public double berechneFachDurschschnitt(String halbjahr, String endHalbjahr){
+        return 2.0;
     }
 
     @Override

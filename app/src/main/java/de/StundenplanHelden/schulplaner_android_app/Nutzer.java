@@ -1,4 +1,5 @@
-import java.util.Date;
+package de.StundenplanHelden.schulplaner_android_app;
+
 
 public class Nutzer {
     private String vorname;
@@ -7,10 +8,10 @@ public class Nutzer {
     private String klassenlehrer;
     private String klasse;
     private String schule;
-    private Date gebDate;
+    private Datum gebDate;
 
 
-    public Nutzer (String vorname, String nachname, String email, String klassenlehrer, String klasse, String schule, Date gebDate){
+    public Nutzer (String vorname, String nachname, String email, String klassenlehrer, String klasse, String schule, Datum gebDate){
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
@@ -45,7 +46,7 @@ public class Nutzer {
     public String getSchule(){
         return schule;
     }
-    public Date getGebDate(){
+    public Datum getGebDate(){
         return gebDate;
     }
     // </editor-fold>
