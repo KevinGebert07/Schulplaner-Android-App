@@ -1,5 +1,8 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
+import android.util.Log;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Verwaltung {
@@ -28,5 +31,6 @@ public class Verwaltung {
     public double notendurchschnittBerechnen (String halbjahr, ArrayList<Fach> fächer){
         return 2.0;
     }
+
 
 }

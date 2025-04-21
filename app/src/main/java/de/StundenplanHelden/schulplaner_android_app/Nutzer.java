@@ -11,14 +11,18 @@ public class Nutzer {
     private Datum gebDate;
 
 
-    public Nutzer (String vorname, String nachname, String email, String klassenlehrer, String klasse, String schule, Datum gebDate){
+    public Nutzer (String vorname, String nachname, String email, String klassenlehrer, String klasse, String schule, String gebDate){
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
         this.klassenlehrer = klassenlehrer;
         this.klasse = klasse;
         this.schule = schule;
-        this.gebDate = gebDate;
+
+        String[] gebDates;
+        gebDates = gebDate.split("[.]");
+        this.gebDate = new Datum(Integer.parseInt(gebDates[0]), Integer.parseInt(gebDates[1]), Integer.parseInt(gebDates[2]));
+
     }
 
     @Override

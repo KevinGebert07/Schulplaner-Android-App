@@ -2,6 +2,7 @@ package de.StundenplanHelden.schulplaner_android_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -9,6 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -24,5 +31,47 @@ public class ProfileActivity extends AppCompatActivity {
         });
         Button bearbeiten = (Button) findViewById(R.id.bearbeiten);
         bearbeiten.setOnClickListener(v -> startActivity(new Intent(this, EditProfileActivity.class)));
+        loadJSONProfil();
+
+
+    }
+
+    private Nutzer loadJSONProfil(){
+        Nutzer nutzer = null;
+        try{
+            //load JSON
+            InputStream inputStream = getAssets().open("profil.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            Log.i("loadJSONProfile", "InputStrem cloased");
+
+            //JSONArray Objekt erstellen
+            String json;
+            int max;
+
+            json = new String(buffer, StandardCharsets.UTF_8);
+            JSONArray jsonArray = new JSONArray(json);
+            max = jsonArray.length();
+
+            //JSON-Objekt erstellen
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+            //Aus JSON Objekt Nutzer Objekt erstellen
+            nutzer = new Nutzer(
+                    jsonObject.getString("vorname"),
+                    jsonObject.getString("nachname"),
+                    jsonObject.getString("email"),
+                    jsonObject.getString("klasse"),
+                    jsonObject.getString("klassenlehrer"),
+                    jsonObject.getString("schule"),
+                    jsonObject.getString("geburtsdatum")
+            );
+        }catch(Exception e)
+        {
+            Log.e("TAG", "getJSONProfil: " + e);
+        }
+        return nutzer;
     }
 }

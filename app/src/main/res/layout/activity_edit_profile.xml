@@ -29,11 +29,12 @@
             android:padding="4dp"/>
 
         <EditText
+            android:id="@+id/editVorname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Max"
             android:inputType="textPersonName"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </TableRow>
 
     <!-- Nachname -->
@@ -51,11 +52,12 @@
             android:padding="4dp"/>
 
         <EditText
+            android:id="@+id/editNachname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Mustermann"
             android:inputType="textPersonName"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </TableRow>
 
     <!-- E-Mail -->
@@ -73,36 +75,17 @@
             android:padding="4dp"/>
 
         <EditText
+            android:id="@+id/editEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="max@example.com"
             android:inputType="textEmailAddress"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </TableRow>
 
     <!-- Telefonnummer -->
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Telefon:"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginEnd="16dp"
-            android:padding="4dp"/>
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="0123 456789"
-            android:inputType="phone"
-            android:padding="8dp"/>
-    </TableRow>
-
-    <!-- Klasse -->
+        <!-- Klasse -->
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -117,11 +100,12 @@
             android:padding="4dp"/>
 
         <EditText
+            android:id="@+id/editKlasse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="10a"
             android:inputType="text"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </TableRow>
 
     <!-- Klassenlehrer -->
@@ -139,11 +123,12 @@
             android:padding="4dp"/>
 
         <EditText
+            android:id="@+id/editKlassenlehrer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Frau Müller"
             android:inputType="text"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </TableRow>
 
     <!-- Schule -->
@@ -161,11 +146,12 @@
             android:padding="4dp"/>
 
         <EditText
+            android:id="@+id/editSchule"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Muster Gymnasium"
             android:inputType="text"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </TableRow>
 
     <!-- Geburtsdatum -->
@@ -184,11 +170,12 @@
             android:padding="4dp"/>
 
         <EditText
+            android:id="@+id/editGeburtsdatum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="01.01.2000"
             android:inputType="date"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </TableRow>
 
         <TableRow
@@ -198,7 +185,9 @@
             android:layout_marginBottom="24dp"
             android:gravity="center">
 
-            <Button android:text="Speichern">
+            <Button
+                android:id="@+id/editSave"
+                android:text="Speichern">
 
             </Button>
         </TableRow>
