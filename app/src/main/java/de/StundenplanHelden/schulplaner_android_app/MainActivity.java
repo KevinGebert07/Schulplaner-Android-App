@@ -12,6 +12,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,9 +33,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createFiles(){
+
         //Hier werden alle Files erstellt bei getFilesDir()
         try{
             File profileFile = new File(getFilesDir(), Verwaltung.PROFILE_FILE_NAME);
+            if (profileFile.createNewFile()){
+                //Wenn die Datei vom Profil noch nicht existier (beim ersten Start) wird dieser Nutzer eingefügt
+                Verwaltung.writeFile(getFilesDir().getPath()+Verwaltung.PROFILE_FILE_NAME, Verwaltung.erstelleBeispielNutzerJSON(), StandardCharsets.UTF_8);
+            }
+
         }
         catch (Exception e) {
             Log.e("MainActivity", "CreateFiles: "+ e);

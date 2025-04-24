@@ -2,6 +2,8 @@ package de.StundenplanHelden.schulplaner_android_app;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -43,6 +45,18 @@ public class Verwaltung {
     {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
+    }
+    public static void writeFile(String path, String content, Charset encoding) throws IOException {
+        byte[] bytes = content.getBytes(encoding);
+        Files.write(Paths.get(path), bytes);
+    }
+
+
+    public static String erstelleBeispielNutzerJSON(){
+        //Erstellt einen Beispielnutzer der beim Starten der App als JSON gespeichert wird
+        Nutzer nutzer = new Nutzer("Max","Mustermann","max.mustermann@musterdomain.com", "Herr Lehrer", "11a", "Musterschule 12345 Musterhausen",new Datum(1,1,2000));
+        Gson gson = new Gson();
+        return gson.toJson(nutzer);
     }
 
 }

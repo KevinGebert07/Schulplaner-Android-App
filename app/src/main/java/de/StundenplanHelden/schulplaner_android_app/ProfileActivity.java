@@ -66,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
                     jsonObject.getString("klasse"),
                     jsonObject.getString("klassenlehrer"),
                     jsonObject.getString("schule"),
-                    jsonObject.getString("geburtsdatum")
+                    new Datum(jsonObject.getString("geburtsdatum"))
             );
         }catch(Exception e)
         {

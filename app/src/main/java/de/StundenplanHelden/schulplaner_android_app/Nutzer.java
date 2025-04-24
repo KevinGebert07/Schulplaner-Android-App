@@ -1,6 +1,8 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
 
+import android.util.Log;
+
 public class Nutzer {
     private String vorname;
     private String nachname;
@@ -11,18 +13,14 @@ public class Nutzer {
     private Datum gebDate;
 
 
-    public Nutzer (String vorname, String nachname, String email, String klassenlehrer, String klasse, String schule, String gebDate){
+    public Nutzer (String vorname, String nachname, String email, String klassenlehrer, String klasse, String schule, Datum gebDate){
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
         this.klassenlehrer = klassenlehrer;
         this.klasse = klasse;
         this.schule = schule;
-
-        String[] gebDates;
-        gebDates = gebDate.split("[.]");
-        this.gebDate = new Datum(Integer.parseInt(gebDates[0]), Integer.parseInt(gebDates[1]), Integer.parseInt(gebDates[2]));
-
+        this.gebDate = gebDate;
     }
 
     @Override

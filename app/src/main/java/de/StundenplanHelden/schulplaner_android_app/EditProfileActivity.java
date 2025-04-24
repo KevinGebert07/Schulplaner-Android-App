@@ -20,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -63,12 +64,12 @@ public class EditProfileActivity extends AppCompatActivity {
         Nutzer nutzer = null;
         try{
             //ProfilFile lesen
-            String profiFileContent = Verwaltung.readFile(Verwaltung.PROFILE_FILE_NAME, StandardCharsets.UTF_8);
+            String profiFileContent = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.PROFILE_FILE_NAME, StandardCharsets.UTF_8);
             Gson gson = new Gson();
             nutzer = gson.fromJson(profiFileContent, Nutzer.class);
         }catch(Exception e)
         {
-            Log.e("TAG", "getJSONProfil: " + e);
+            Log.e("EditProfileActivity", "loadJSONProfil: " + e);
         }
         return nutzer;
     }
@@ -96,7 +97,7 @@ public class EditProfileActivity extends AppCompatActivity {
         String[] contents = new String[7];
         int count = 0;
         for (EditText eText : editTexts){
-            if (eText.getText() == null){
+            if (eText.getText().length() == 0){
                 contents[count] = eText.getHint().toString();
             }
             else{
@@ -104,7 +105,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
             count++;
         }
-        Nutzer nutzer = new Nutzer (contents[0],contents[1],contents[2],contents[3],contents[4],contents[5],contents[6]);
+        Nutzer nutzer = new Nutzer (contents[0],contents[1],contents[2],contents[3],contents[4],contents[5],new Datum(contents[6]));
         return nutzer;
     }
     private void saveNutzerChanges(){
@@ -112,13 +113,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         String jsonString = gson.toJson(nutzer);
-        File file = new File(this.getFilesDir(), "test.json");
+
         try {
-            file.createNewFile();
-            FileWriter writer = new FileWriter(file);
-            writer.write(jsonString);
-            writer.flush();
-            writer.close();
+            Verwaltung.writeFile(getFilesDir()+Verwaltung.PROFILE_FILE_NAME, jsonString, StandardCharsets.UTF_8);
         }
         catch(Exception e){
             Log.e("saveNutzerChanges", "Error: "+e.toString());
