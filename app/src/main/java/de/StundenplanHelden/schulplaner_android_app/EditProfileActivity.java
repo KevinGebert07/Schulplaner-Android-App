@@ -1,7 +1,11 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.FileObserver;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -10,11 +14,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+
+import java.util.Scanner;
 
 public class EditProfileActivity extends AppCompatActivity {
     @Override
@@ -30,6 +44,10 @@ public class EditProfileActivity extends AppCompatActivity {
         Nutzer nutzer = loadJSONProfil();
         findEditTexts();
         setEditTextHints(nutzer);
+
+
+        Button button = (Button) findViewById(R.id.editSave);
+        button.setOnClickListener(v -> saveNutzerChanges());
     }
 
     private EditText vorname;
@@ -44,35 +62,10 @@ public class EditProfileActivity extends AppCompatActivity {
     private Nutzer loadJSONProfil(){
         Nutzer nutzer = null;
         try{
-            //load JSON
-            InputStream inputStream = getAssets().open("profil.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            Log.i("loadJSONProfile", "InputStrem cloased");
-
-            //JSONArray Objekt erstellen
-            String json;
-            int max;
-
-            json = new String(buffer, StandardCharsets.UTF_8);
-            JSONArray jsonArray = new JSONArray(json);
-            max = jsonArray.length();
-
-            //JSON-Objekt erstellen
-            JSONObject jsonObject = jsonArray.getJSONObject(0);
-
-            //Aus JSON Objekt Nutzer Objekt erstellen
-            nutzer = new Nutzer(
-                    jsonObject.getString("vorname"),
-                    jsonObject.getString("nachname"),
-                    jsonObject.getString("email"),
-                    jsonObject.getString("klasse"),
-                    jsonObject.getString("klassenlehrer"),
-                    jsonObject.getString("schule"),
-                    jsonObject.getString("geburtsdatum")
-            );
+            //ProfilFile lesen
+            String profiFileContent = Verwaltung.readFile(Verwaltung.PROFILE_FILE_NAME, StandardCharsets.UTF_8);
+            Gson gson = new Gson();
+            nutzer = gson.fromJson(profiFileContent, Nutzer.class);
         }catch(Exception e)
         {
             Log.e("TAG", "getJSONProfil: " + e);
@@ -98,7 +91,37 @@ public class EditProfileActivity extends AppCompatActivity {
         geburtsdatum.setHint(nutzer.getGebDate().toString());
     }
 
+    public Nutzer getEditTexts (){
+        EditText[] editTexts = new EditText[]{vorname, nachname, email, schule, klasse, klassenlehrer, geburtsdatum};
+        String[] contents = new String[7];
+        int count = 0;
+        for (EditText eText : editTexts){
+            if (eText.getText() == null){
+                contents[count] = eText.getHint().toString();
+            }
+            else{
+                contents[count] = eText.getText().toString();
+            }
+            count++;
+        }
+        Nutzer nutzer = new Nutzer (contents[0],contents[1],contents[2],contents[3],contents[4],contents[5],contents[6]);
+        return nutzer;
+    }
     private void saveNutzerChanges(){
-        //Warscheinlich arbeiten mit GSON
+        Nutzer nutzer = getEditTexts();
+
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(nutzer);
+        File file = new File(this.getFilesDir(), "test.json");
+        try {
+            file.createNewFile();
+            FileWriter writer = new FileWriter(file);
+            writer.write(jsonString);
+            writer.flush();
+            writer.close();
+        }
+        catch(Exception e){
+            Log.e("saveNutzerChanges", "Error: "+e.toString());
+        }
     }
 }
