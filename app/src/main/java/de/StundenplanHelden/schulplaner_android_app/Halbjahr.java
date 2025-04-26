@@ -1,5 +1,7 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
+import java.util.ArrayList;
+
 public class Halbjahr {
     private String bezeichnung;
     private int klausur1;
@@ -9,6 +11,9 @@ public class Halbjahr {
 
     public Halbjahr (String bezeichnung){
         this.bezeichnung = bezeichnung;
+        klausur1 = -1;
+        klausur2 = -1;
+        mündlich = -1;
     }
 
     public void noteEintragen (int position, int notenpunkte){
@@ -24,11 +29,6 @@ public class Halbjahr {
                 break;
         }
     }
-
-    public void setNotiz(String notiz){
-        this.notiz = notiz;
-    }
-
     public int getNote(int position){
         switch(position){
             case 1:
@@ -40,4 +40,15 @@ public class Halbjahr {
         }
         return -1;
     }
+    public void setNotiz(String notiz){
+        this.notiz = notiz;
+    }
+
+    public double durchSchnittBerechnen(){
+        double[] werte = new double[]{klausur1,klausur2,mündlich};
+        double avg = Verwaltung.berechneDurchschnittPositiv(werte);
+        return avg;
+    }
+
+
 }

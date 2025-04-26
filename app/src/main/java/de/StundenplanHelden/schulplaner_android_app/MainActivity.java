@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             File profileFile = new File(getFilesDir(), Verwaltung.PROFILE_FILE_NAME);
             if (profileFile.createNewFile()){
                 //Wenn die Datei vom Profil noch nicht existier (beim ersten Start) wird dieser Nutzer eingefügt
-                Verwaltung.getInstance().writeFile(getFilesDir().getPath()+Verwaltung.PROFILE_FILE_NAME, Verwaltung.getInstance().erstelleBeispielNutzerJSON(), StandardCharsets.UTF_8);
+                Verwaltung.writeFile(getFilesDir().getPath()+Verwaltung.PROFILE_FILE_NAME, Verwaltung.getInstance().erstelleBeispielNutzerJSON(), StandardCharsets.UTF_8);
             }
 
         }

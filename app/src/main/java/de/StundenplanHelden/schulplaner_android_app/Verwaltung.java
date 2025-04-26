@@ -2,6 +2,8 @@ package de.StundenplanHelden.schulplaner_android_app;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -16,15 +18,20 @@ public class Verwaltung {
     //Singleton Aufbau
     private static Verwaltung instance = null;
 
+    // Attribute
     protected Nutzer nutzer;
     protected Stundenplan stundenplan;
     protected ArrayList<Fach> fächer;
 
 
+    //Finale Attribute
     protected static final String PROFILE_FILE_NAME = "nutzer.json";
+
+    //Konstruktor
     private Verwaltung(){
 
     }
+    //Singleton Instanz bekommen
     public static Verwaltung getInstance(){
         if (instance==null){
             instance = new Verwaltung();
@@ -33,7 +40,39 @@ public class Verwaltung {
     }
 
 
-    //Methoden
+    //Statische Methoden für generelle Aufgaben
+
+    //Statische Methode zur Berechnung des Durchschnitts eines double-Arrays, mit Missachtung negativer Werte
+    public static double berechneDurchschnittPositiv(double[] werte){
+        // Werte avg (Durchschnitt) und count anlegen
+        double avg = 0.0;
+        int count = 0;
+
+        //Jeden Wert der nicht negativ ist zu avg hinzufügen; dann count erhöhen
+        for (double wert : werte){
+            if (wert >= 0){
+                avg+=wert;
+                count++;
+            }
+        }
+
+        //Wenn count >= 0 avg durch count teilen -> Durchschnitt, ohne dass durch 0 geteilt wird
+        if (count != 0){avg = avg / count;}
+        return avg;
+    }
+
+    //Statische Methode zum Lesen und Schreiben von Files im getFilesDir() Ordner
+    public static String readFile(String path, Charset encoding) throws IOException{
+        byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return new String(encoded, encoding);
+    }
+    public static void writeFile(String path, String content, Charset encoding) throws IOException {
+        byte[] bytes = content.getBytes(encoding);
+        Files.write(Paths.get(path), bytes);
+    }
+
+
+    //Public Methoden, die über das Singleton Objekt ausgeführt werden
     public Stundenplan neuerStundenplan(){
         return new Stundenplan("kekw");
     }
@@ -54,6 +93,8 @@ public class Verwaltung {
         }
         return check;
     }
+
+
 
     //Methoden zur Berechnung des Durchschnitts
 
@@ -81,16 +122,6 @@ public class Verwaltung {
         return 0.0;
     }
 
-    public String readFile(String path, Charset encoding)
-            throws IOException
-    {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
-    }
-    public void writeFile(String path, String content, Charset encoding) throws IOException {
-        byte[] bytes = content.getBytes(encoding);
-        Files.write(Paths.get(path), bytes);
-    }
 
 
 
@@ -100,5 +131,7 @@ public class Verwaltung {
         Gson gson = new Gson();
         return gson.toJson(nutzer);
     }
+
+
 
 }
