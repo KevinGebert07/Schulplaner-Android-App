@@ -4,11 +4,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Unterrichtsstunde {
-    private String stunde;
-    private ArrayList<String> lehrer;
-    private String raum;
-
-    private Fach fach;
+    protected String stunde;
+    protected ArrayList<String> lehrer;
+    protected String raum;
+    protected Fach fach;
 
     public Unterrichtsstunde (String stunde, ArrayList<String> lehrer, String raum, Fach fach){
         this.stunde = stunde;
@@ -16,7 +15,5 @@ public class Unterrichtsstunde {
         this.raum = raum;
         this.fach = fach;
     }
-
-
 
 }

@@ -64,7 +64,7 @@ public class EditProfileActivity extends AppCompatActivity {
         Nutzer nutzer = null;
         try{
             //ProfilFile lesen
-            String profiFileContent = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.PROFILE_FILE_NAME, StandardCharsets.UTF_8);
+            String profiFileContent = Verwaltung.getInstance().readFile(getFilesDir().getPath() + Verwaltung.PROFILE_FILE_NAME, StandardCharsets.UTF_8);
             Gson gson = new Gson();
             nutzer = gson.fromJson(profiFileContent, Nutzer.class);
         }catch(Exception e)
@@ -115,7 +115,7 @@ public class EditProfileActivity extends AppCompatActivity {
         String jsonString = gson.toJson(nutzer);
 
         try {
-            Verwaltung.writeFile(getFilesDir()+Verwaltung.PROFILE_FILE_NAME, jsonString, StandardCharsets.UTF_8);
+            Verwaltung.getInstance().writeFile(getFilesDir()+Verwaltung.PROFILE_FILE_NAME, jsonString, StandardCharsets.UTF_8);
         }
         catch(Exception e){
             Log.e("saveNutzerChanges", "Error: "+e.toString());
