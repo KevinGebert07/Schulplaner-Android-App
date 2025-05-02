@@ -26,7 +26,7 @@ public class TimetableActivity extends AppCompatActivity {
         Fach mathe = new Fach ("Mathe", R.color.blau);
         Button button = (Button) findViewById(R.id.button7);
 
-        button.setText(mathe.getBezeichnung());
-        button.setBackgroundTintList(ContextCompat.getColorStateList(this, mathe.getFarbe()));
+        button.setText(mathe.bezeichnung);
+        button.setBackgroundTintList(ContextCompat.getColorStateList(this, mathe.farbe));
     }
 }
