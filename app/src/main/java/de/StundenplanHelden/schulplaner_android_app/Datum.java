@@ -1,9 +1,12 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
+import java.time.LocalDate;
+
 public class Datum {
     private int tag;
     private int monat;
     private int jahr;
+
 
     // Konstruktor
     public Datum(int tag, int monat, int jahr) {
@@ -25,7 +28,22 @@ public class Datum {
         }
     }
 
+    //Methode die ein Datum-Objekt mit dem heutigen Datum zurückgibt
+    public static Datum Heute(){
+        LocalDate heute = LocalDate.now();
+        return new Datum(heute.getDayOfMonth(), heute.getMonthValue(), heute.getYear());
+    }
 
+    public Datum morgen(){
+        LocalDate aktuellesDatum = LocalDate.of(this.jahr, this.monat, this.tag);
+        LocalDate naechsterTag = aktuellesDatum.plusDays(1);
+        return new Datum(naechsterTag.getDayOfMonth(), naechsterTag.getMonthValue(), naechsterTag.getYear());
+    }
+    public Datum gestern(){
+        LocalDate aktuellesDatum = LocalDate.of(this.jahr, this.monat, this.tag);
+        LocalDate letzterTag = aktuellesDatum.plusDays(-1);
+        return new Datum(letzterTag.getDayOfMonth(), letzterTag.getMonthValue(), letzterTag.getYear());
+    }
 
     // Getter-Methoden
     public int getTag() {
