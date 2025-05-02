@@ -22,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 import org.w3c.dom.Text;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TimetableActivity extends AppCompatActivity {
@@ -43,6 +44,7 @@ public class TimetableActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Verwaltung verwaltung = Verwaltung.getInstance();
         DatumText = (TextView) findViewById(R.id.Datum);
         nextButton = (Button) findViewById(R.id.next);
         backButton = (Button) findViewById(R.id.back);
@@ -66,6 +68,23 @@ public class TimetableActivity extends AppCompatActivity {
         DatumText.setText(Datum.berechneWochentag(currentDatum)+", der "+ currentDatum.toString());
 
 
+        //Heutige Unterrichtsstunden laden
+        Schultag heute = verwaltung.stundenplan.sw1.getSchultag(Datum.berechneWochentagInt(currentDatum));
+        ArrayList<Unterrichtsstunde> unterrichtsstunden = heute.unterrichtsstunden;
+
+
+        for (int i = 0; i < unterrichtsstunden.size(); i++){
+            //Erstelle eine Stunde Ding in xml
+            InflateToXml();
+
+            //Fülle Daten von Unterrichtsstunde in Button und TextView
+            Unterrichtsstunde heuteStunde = unterrichtsstunden.get(i);
+            String btnText = heuteStunde.fach.bezeichnung + " | " + heuteStunde.raum + " | "+ heuteStunde.lehrer.toString();
+            int btnColor = heuteStunde.fach.farbe;
+            Button btn = (Button) findViewById(IDs.get("btn"+i));
+            btn.setText(btnText);
+            btn.setBackgroundColor(btnColor);
+        }
     }
 
     private void ChangeToNextDay(){
@@ -82,6 +101,7 @@ public class TimetableActivity extends AppCompatActivity {
     private void InflateToXml(){
         LinearLayout parentLayout = findViewById(R.id.parentLayout);
 
+
         // Layout programmatisch "inflaten"
         View included = LayoutInflater.from(this).inflate(R.layout.lesson_item, parentLayout, false);
         ConstraintLayout includedLayout = (ConstraintLayout) included;
@@ -91,9 +111,8 @@ public class TimetableActivity extends AppCompatActivity {
         Button btn = (Button) includedLayout.getChildAt(0);
         int txtID = View.generateViewId();
         int btnID = View.generateViewId();
-        Log.e("TimeTableActivity", "txtID: "+ txtID+" btnID: "+ btnID);
+        btn.setId(btnID);
         txt.setId(txtID);
-        txt.setId(btnID);
         IDs.put("txt"+idCount, txtID);
         IDs.put("btn"+idCount, btnID);
         idCount++;

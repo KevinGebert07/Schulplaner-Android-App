@@ -42,6 +42,15 @@ public class Datum {
         String[] wochentage = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
         return wochentage[w];
     }
+    public static int berechneWochentagInt(Datum datum) {
+        if (datum.monat < 3) {
+            datum.monat += 12;
+            datum.jahr -= 1;
+        }
+        int w = (datum.tag + 2*datum.monat + (3*datum.monat + 3)/5 + datum.jahr + datum.jahr/4 - datum.jahr/100 + datum.jahr/400 + 1) % 7;
+        Integer[] wochentage = {7, 1, 2, 3, 4, 5, 6};
+        return wochentage[w];
+    }
 
     public Datum morgen(){
         LocalDate aktuellesDatum = LocalDate.of(this.jahr, this.monat, this.tag);

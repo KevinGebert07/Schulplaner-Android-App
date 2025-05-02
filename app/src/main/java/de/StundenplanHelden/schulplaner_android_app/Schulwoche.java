@@ -8,6 +8,6 @@ public class Schulwoche {
     }
 
     public Schultag getSchultag(int position){
-        return schultage[position];
+        return schultage[position-1];
     }
 }

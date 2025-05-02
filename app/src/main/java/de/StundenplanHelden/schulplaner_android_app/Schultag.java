@@ -3,8 +3,8 @@ package de.StundenplanHelden.schulplaner_android_app;
 import java.util.ArrayList;
 
 public class Schultag {
-    private String wochentag;
-    private ArrayList<Unterrichtsstunde> unterrichtsstunden;
+    protected String wochentag;
+    protected ArrayList<Unterrichtsstunde> unterrichtsstunden;
 
     public Schultag (String wochentag){
         this.wochentag = wochentag;
