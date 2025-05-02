@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="zurück"
-                android:textSize="20dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/Datum"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="vor"
-                android:textSize="20dp" />
+                android:textSize="10dp" />
         </LinearLayout>
 
         <ScrollView
@@ -62,58 +62,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/hellgrau"
-                    android:scaleY="1">
-
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="278dp"
-                        android:layout_height="72dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="8dp"
-                        android:backgroundTint="#6D1805"
-                        android:text="DEUTSCH  |  R040  |  Günther"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="08:00-\n09:30"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleY="1">
-
-                    <Button
-                        android:id="@+id/button6"
-                        android:layout_width="278dp"
-                        android:layout_height="72dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="8dp"
-                        android:backgroundTint="#6D1805"
-                        android:text="DEUTSCH"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="08:00-\n09:30"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button6"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </ScrollView>
 

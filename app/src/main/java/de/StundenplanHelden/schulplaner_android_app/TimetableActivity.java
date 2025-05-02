@@ -2,6 +2,8 @@ package de.StundenplanHelden.schulplaner_android_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class TimetableActivity extends AppCompatActivity {
         DatumText = (TextView) findViewById(R.id.Datum);
         nextButton = (Button) findViewById(R.id.next);
         backButton = (Button) findViewById(R.id.back);
+        IDs = new HashMap<String, Integer>();
 
         //OnClickListener setzen
         nextButton.setOnClickListener(v -> ChangeToNextDay());
@@ -60,7 +63,8 @@ public class TimetableActivity extends AppCompatActivity {
         else {
             currentDatum = Datum.Heute();
         }
-        DatumText.setText(currentDatum.toString());
+        DatumText.setText(Datum.berechneWochentag(currentDatum)+", der "+ currentDatum.toString());
+
 
     }
 
@@ -75,7 +79,7 @@ public class TimetableActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void InflateToXml(String id){
+    private void InflateToXml(){
         LinearLayout parentLayout = findViewById(R.id.parentLayout);
 
         // Layout programmatisch "inflaten"
@@ -84,9 +88,10 @@ public class TimetableActivity extends AppCompatActivity {
 
         //TextView und Button des neuen Objekts bekommen und ID setzen, ID in HashMap einfügen
         TextView txt = (TextView) includedLayout.getChildAt(1);
-        Button btn = (Button) includedLayout.getChildAt(1);
+        Button btn = (Button) includedLayout.getChildAt(0);
         int txtID = View.generateViewId();
         int btnID = View.generateViewId();
+        Log.e("TimeTableActivity", "txtID: "+ txtID+" btnID: "+ btnID);
         txt.setId(txtID);
         txt.setId(btnID);
         IDs.put("txt"+idCount, txtID);

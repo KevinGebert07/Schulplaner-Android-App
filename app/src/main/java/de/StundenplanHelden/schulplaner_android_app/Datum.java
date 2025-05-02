@@ -33,6 +33,15 @@ public class Datum {
         LocalDate heute = LocalDate.now();
         return new Datum(heute.getDayOfMonth(), heute.getMonthValue(), heute.getYear());
     }
+    public static String berechneWochentag(Datum datum) {
+        if (datum.monat < 3) {
+            datum.monat += 12;
+            datum.jahr -= 1;
+        }
+        int w = (datum.tag + 2*datum.monat + (3*datum.monat + 3)/5 + datum.jahr + datum.jahr/4 - datum.jahr/100 + datum.jahr/400 + 1) % 7;
+        String[] wochentage = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
+        return wochentage[w];
+    }
 
     public Datum morgen(){
         LocalDate aktuellesDatum = LocalDate.of(this.jahr, this.monat, this.tag);
@@ -44,6 +53,7 @@ public class Datum {
         LocalDate letzterTag = aktuellesDatum.plusDays(-1);
         return new Datum(letzterTag.getDayOfMonth(), letzterTag.getMonthValue(), letzterTag.getYear());
     }
+
 
     // Getter-Methoden
     public int getTag() {
