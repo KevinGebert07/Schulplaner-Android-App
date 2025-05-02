@@ -15,5 +15,4 @@ public class Unterrichtsstunde {
         this.raum = raum;
         this.fach = fach;
     }
-
 }

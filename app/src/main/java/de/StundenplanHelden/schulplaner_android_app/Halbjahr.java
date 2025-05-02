@@ -14,6 +14,7 @@ public class Halbjahr {
         klausur1 = -1;
         klausur2 = -1;
         mündlich = -1;
+        notiz = "";
     }
 
     public void noteEintragen (int position, int notenpunkte){
@@ -49,6 +50,4 @@ public class Halbjahr {
         double avg = Verwaltung.berechneDurchschnittPositiv(werte);
         return avg;
     }
-
-
 }

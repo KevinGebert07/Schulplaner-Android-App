@@ -1,9 +1,5 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
-import android.graphics.Color;
-
-import java.util.ArrayList;
-
 public class Fach {
     protected String bezeichnung;
     protected int farbe;

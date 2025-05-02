@@ -9,8 +9,10 @@ public class Stundenplan {
     protected Schulwoche sw1;
     protected Schulwoche sw2;
 
-    public Stundenplan (String bezeichnung){
+    public Stundenplan (String bezeichnung, Schulwoche sw1, Schulwoche sw2){
         this.bezeichnung = bezeichnung;
+        this.sw1 = sw1;
+        this.sw2 = sw2;
         abweichung = new HashMap<>();
     }
 

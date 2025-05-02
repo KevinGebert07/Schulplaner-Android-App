@@ -8,6 +8,11 @@ public class Schultag {
 
     public Schultag (String wochentag){
         this.wochentag = wochentag;
+        this.unterrichtsstunden = new ArrayList<>();
+    }
+    public Schultag (String wochentag, ArrayList<Unterrichtsstunde> unterrichtsstunden){
+        this.wochentag = wochentag;
+        this.unterrichtsstunden = unterrichtsstunden;
     }
 
     public void unterrichtsstundeEinfügen(int position, Unterrichtsstunde unterrichtsstunde){
@@ -17,5 +22,4 @@ public class Schultag {
     public String getWochentag(){
         return wochentag;
     }
-
 }
