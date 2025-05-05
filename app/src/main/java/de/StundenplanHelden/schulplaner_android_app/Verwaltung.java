@@ -213,8 +213,8 @@ public class Verwaltung {
                         new Schultag("Mittwoch",unterrichtsstunden),
                         new Schultag("Donnerstag",unterrichtsstunden),
                         new Schultag("Freitag",unterrichtsstunden),
-                        new Schultag("Samstag",unterrichtsstunden),
-                        new Schultag("Sonntag",unterrichtsstunden),
+                        new Schultag("Samstag", new ArrayList<>()),
+                        new Schultag("Sonntag", new ArrayList<>()),
                 }
         );
 
