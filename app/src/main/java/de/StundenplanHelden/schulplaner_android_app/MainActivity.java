@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -23,6 +24,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +57,38 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    public static ArrayList<Fach> tlsFächer(){
+        //Erstelle Beispielfächer, die beim Starten der APP als JSON gespeichert werden
+        ArrayList<Fach> fächer = new ArrayList<>(Arrays.asList(
+            new Fach("Deutsch", R.color.Deutsch),
+            new Fach("Mathe",R.color.Mathematik),
+            new Fach("Englisch",R.color.Englisch ),
+            new Fach("Powi", R.color.Powi),
+            new Fach("Geschichte", R.color.Geschichte),
+            new Fach("Chemie", R.color.Chemie),
+            new Fach("Physik", R.color.Physik),
+            new Fach("Biologie", R.color.Biologie),
+            new Fach("PI", R.color.Physik),
+            new Fach("ITEC", R.color.Informationstechnik),
+            new Fach("Software Engeneering", R.color.SoftwareEngineering),
+            new Fach("Bautechnik", R.color.Bautechnik),
+            new Fach("Konstruktionslehre", R.color.Konstruktionslehre),
+            new Fach("Technische Kommunikation", R.color.TK),
+            new Fach("Mechatronik", R.color.Mechatronik),
+            new Fach("Elektrotechnik", R.color.Elektrotechnik),
+            new Fach("DS", R.color.DS),
+            new Fach("Debattieren", R.color.Deutsch),
+            new Fach("Veranstaltungstechnik", R.color.Veranstalltungstechnik),
+            new Fach("Schulband", R.color.Schulband),
+            new Fach("Religion", R.color.Religion),
+            new Fach("Ethik", R.color.Ethik),
+            new Fach("Sport", R.color.Sport),
+            new Fach("Spanisch", R.color.Spanisch)
+                ));
+        return fächer;
+    }
+
 
     public void createFiles(){
         //Hier werden alle Files erstellt bei getFilesDir()
