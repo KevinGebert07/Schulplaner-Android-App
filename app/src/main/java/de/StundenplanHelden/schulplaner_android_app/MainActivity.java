@@ -45,12 +45,15 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
 
         try {
-            verwaltung.stundenplan = gson.fromJson(Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.STUNDENPLAN_FILE_NAME, StandardCharsets.UTF_8), Stundenplan.class);
+            //verwaltung.stundenplan = gson.fromJson(Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.STUNDENPLAN_FILE_NAME, StandardCharsets.UTF_8), Stundenplan.class);
 
-            String fächerJson = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME,StandardCharsets.UTF_8);
-            Type listType = new TypeToken<List<Fach>>(){}.getType();
-            List<Fach> fächer = gson.fromJson(fächerJson, listType);
-            verwaltung.fächer = new ArrayList<>(fächer);
+            //String fächerJson = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME,StandardCharsets.UTF_8);
+            //Type listType = new TypeToken<List<Fach>>(){}.getType();
+            //List<Fach> fächer = gson.fromJson(fächerJson, listType);
+            //verwaltung.fächer = new ArrayList<>(fächer);
+
+            verwaltung.neueFächer(tlsFächer());
+            verwaltung.neuerStundenplan(BGStundenplan.jannisStundenplan());
 
         } catch (Exception e) {
             Log.e("MainActivity", "Catch Data from JSON: "+ e);
@@ -58,34 +61,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static ArrayList<Fach> tlsFächer(){
+    public ArrayList<Fach> tlsFächer(){
         //Erstelle Beispielfächer, die beim Starten der APP als JSON gespeichert werden
-        ArrayList<Fach> fächer = new ArrayList<>(Arrays.asList(
-            new Fach("Deutsch", R.color.Deutsch),
-            new Fach("Mathe",R.color.Mathematik),
-            new Fach("Englisch",R.color.Englisch ),
-            new Fach("Powi", R.color.Powi),
-            new Fach("Geschichte", R.color.Geschichte),
-            new Fach("Chemie", R.color.Chemie),
-            new Fach("Physik", R.color.Physik),
-            new Fach("Biologie", R.color.Biologie),
-            new Fach("PI", R.color.Physik),
-            new Fach("ITEC", R.color.Informationstechnik),
-            new Fach("Software Engeneering", R.color.SoftwareEngineering),
-            new Fach("Bautechnik", R.color.Bautechnik),
-            new Fach("Konstruktionslehre", R.color.Konstruktionslehre),
-            new Fach("Technische Kommunikation", R.color.TK),
-            new Fach("Mechatronik", R.color.Mechatronik),
-            new Fach("Elektrotechnik", R.color.Elektrotechnik),
-            new Fach("DS", R.color.DS),
-            new Fach("Debattieren", R.color.Deutsch),
-            new Fach("Veranstaltungstechnik", R.color.Veranstalltungstechnik),
-            new Fach("Schulband", R.color.Schulband),
-            new Fach("Religion", R.color.Religion),
-            new Fach("Ethik", R.color.Ethik),
-            new Fach("Sport", R.color.Sport),
-            new Fach("Spanisch", R.color.Spanisch)
-                ));
+    ArrayList<Fach> fächer = new ArrayList<>(Arrays.asList(
+        new Fach("Deutsch", getResources().getColor(R.color.Deutsch, null)),
+        new Fach("Mathe", getResources().getColor(R.color.Mathematik, null)),
+        new Fach("Geschichte", getResources().getColor(R.color.Geschichte, null)),
+        new Fach("Powi", getResources().getColor(R.color.Powi, null)),
+        new Fach("Physik", getResources().getColor(R.color.Physik, null)),
+        new Fach("Biologie", getResources().getColor(R.color.Biologie, null)),
+        new Fach("Chemie", getResources().getColor(R.color.Chemie, null)),
+        new Fach("Ethik", getResources().getColor(R.color.Ethik, null)),
+        new Fach("Religion", getResources().getColor(R.color.Religion, null)),
+        new Fach("Sport", getResources().getColor(R.color.Sport, null)),
+        new Fach("Spanisch", getResources().getColor(R.color.Spanisch, null)),
+        new Fach("Praktische Informatik", getResources().getColor(R.color.PraktischeInformatik, null)),
+        new Fach("Englisch", getResources().getColor(R.color.Englisch, null)),
+        new Fach("ITEC", getResources().getColor(R.color.Informationstechnik, null)),
+        new Fach("Software Engeneering", getResources().getColor(R.color.SoftwareEngineering, null)),
+        new Fach("Bautechnik", getResources().getColor(R.color.Bautechnik, null)),
+        new Fach("Konstruktionslehre", getResources().getColor(R.color.Konstruktionslehre, null)),
+        new Fach("Technische Kommunikation", getResources().getColor(R.color.TechnischeKommunikation, null)),
+        new Fach("Mechatronik", getResources().getColor(R.color.Mechatronik, null)),
+        new Fach("Elektrotechnik", getResources().getColor(R.color.Elektrotechnik, null)),
+        new Fach("DS", getResources().getColor(R.color.DS, null)),
+        new Fach("Debattieren", getResources().getColor(R.color.Deutsch, null)),
+        new Fach("Veranstaltungstechnik", getResources().getColor(R.color.Veranstaltungstechnik, null)),
+        new Fach("Schulband", getResources().getColor(R.color.Schulband, null))
+        ));
+        Log.e("FATAL", "TLS Fächer erstellt:" + fächer.toString());
         return fächer;
     }
 

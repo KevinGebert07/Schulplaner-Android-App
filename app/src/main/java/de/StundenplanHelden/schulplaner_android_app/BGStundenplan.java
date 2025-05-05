@@ -10,101 +10,67 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BGStundenplan {
-    public static ArrayList<Fach> tlsFächer(){
-
-        //Erstelle Beispielfächer, die beim Starten der APP als JSON gespeichert werden
-        ArrayList<Fach> fächer = new ArrayList<>() {
-            new Fach("Deutsch", ),                      //0
-            new Fach("Englisch", ),                     //1
-            new Fach("Mathematik", ),                   //2
-            new Fach("Geschichte", ),                   //3
-            new Fach("PoWi", ),                         //4
-            new Fach("Physik", ),                       //5
-            new Fach("Biologie", ),                     //6
-            new Fach("Chemie", ),                       //7
-            new Fach("Ethik", ),                        //8
-            new Fach("Religion", ),                     //9
-            new Fach("Sport", ),                        //10
-            new Fach("Spanisch", )                      //11
-            new Fach("Praktische Informatik", ),        //12
-            new Fach("Informationstechnik", ),          //13
-            new Fach("Software Engineering", ),         //14
-            new Fach("Bautechnik", ),                   //15
-            new Fach("Konstruktionslehre", ),           //16
-            new Fach("Mechatronik", ),                  //17
-            new Fach("Elektrotechnik", ),               //18
-            new Fach("Technische Kommunikation", ),     //19
-            new Fach("Darstellendes Spiel", ),          //20
-            new Fach("Debattieren", ),                  //21
-            new Fach("Veranstaltungstechnik", ),        //22
-            new Fach("Schulband", ),                    //23
-            new Fach("Kreatives Schreiben"),            //24
-
-        };
-        return fächer;
-    }
-
-    public static String jannisStundenplan(){
-        ArrayList<Fach> fächer = tlsFächer();
-
+    public static Stundenplan jannisStundenplan(){
+        ArrayList<Fach> fächer = Verwaltung.getInstance().fächer;
         //Objekte Unterrichtsstunden Montag
-        Unterrichtsstunde m1 = new Unterrichtsstunde("1", new ArrayList<>(){"Engel"}, "U042", fächer.get(12));
-        Unterrichtsstunde m2 = new Unterrichtsstunde("2", new ArrayList<>(){"Engel"}, "U042", fächer.get(13));
-        Unterrichtsstunde m3 = new Unterrichtsstunde("3", new ArrayList<>(){"Schmidt"}, "U040", fächer.get(13));
-        Unterrichtsstunde m4 = new Unterrichtsstunde("4", new ArrayList<>(){"Schmidt"}, "U040", fächer.get(13));
-        Unterrichtsstunde m5 = new Unterrichtsstunde("5", new ArrayList<>(){"Harth"}, "208", fächer.get(0));
-        Unterrichtsstunde m6 = new Unterrichtsstunde("6", new ArrayList<>(){"Harth"}, "208", fächer.get(0));
+        Unterrichtsstunde mo1 = new Unterrichtsstunde("1", new ArrayList<>(Arrays.asList("Engel")), "U042", fächer.get(11));
+        Unterrichtsstunde mo2 = new Unterrichtsstunde("2", new ArrayList<>(Arrays.asList("Engel")), "U042", fächer.get(11));
+        Unterrichtsstunde mo3 = new Unterrichtsstunde("3", new ArrayList<>(Arrays.asList("Schmidt")), "U040", fächer.get(13));
+        Unterrichtsstunde mo4 = new Unterrichtsstunde("4", new ArrayList<>(Arrays.asList("Schmidt")), "U040", fächer.get(13));
+        Unterrichtsstunde mo5 = new Unterrichtsstunde("5", new ArrayList<>(Arrays.asList("Harth")), "208", fächer.get(0));
+        Unterrichtsstunde mo6 = new Unterrichtsstunde("6", new ArrayList<>(Arrays.asList("Harth")), "208", fächer.get(0));
 
-        //Objekte Unterrichtsstunden Dienstag
-        Unterrichtsstunde d1 = new Unterrichtsstunde("1", new ArrayList<>(){"Aldudak"}, "R25", fächer.get(4));
-        Unterrichtsstunde d2 = new Unterrichtsstunde("2", new ArrayList<>(){"Aldudak"}, "R25", fächer.get(4));
-        Unterrichtsstunde d3 = new Unterrichtsstunde("3", new ArrayList<>(){"Penschinski"}, "R040", fächer.get(2));
-        Unterrichtsstunde d4 = new Unterrichtsstunde("4", new ArrayList<>(){"Penschinski"}, "R040", fächer.get(2));
-        Unterrichtsstunde d5 = new Unterrichtsstunde("5", new ArrayList<>(){"Kühn"}, "212", fächer.get(7));
-        Unterrichtsstunde d6 = new Unterrichtsstunde("6", new ArrayList<>(){"Kühn"}, "212", fächer.get(7));
-        Unterrichtsstunde d7 = new Unterrichtsstunde("7", new ArrayList<>(){"Becker"}, "Sporthalle", fächer.get(10));
-        Unterrichtsstunde d8 = new Unterrichtsstunde("8", new ArrayList<>(){"Becker"}, "Sporthalle", fächer.get(10));
+//Objekte Unterrichtsstunden Dienstag
+        Unterrichtsstunde di1 = new Unterrichtsstunde("1", new ArrayList<>(Arrays.asList("Aldudak")), "R25", fächer.get(3));
+        Unterrichtsstunde di2 = new Unterrichtsstunde("2", new ArrayList<>(Arrays.asList("Aldudak")), "R25", fächer.get(3));
+        Unterrichtsstunde di3 = new Unterrichtsstunde("3", new ArrayList<>(Arrays.asList("Penschinski")), "R040", fächer.get(1));
+        Unterrichtsstunde di4 = new Unterrichtsstunde("4", new ArrayList<>(Arrays.asList("Penschinski")), "R040", fächer.get(1));
+        Unterrichtsstunde di5 = new Unterrichtsstunde("5", new ArrayList<>(Arrays.asList("Kühn")), "R212", fächer.get(6));
+        Unterrichtsstunde di6 = new Unterrichtsstunde("6", new ArrayList<>(Arrays.asList("Kühn")), "R212", fächer.get(6));
+        Unterrichtsstunde di7 = new Unterrichtsstunde("7", new ArrayList<>(Arrays.asList("Becker")), "Sporthalle", fächer.get(9));
+        Unterrichtsstunde di8 = new Unterrichtsstunde("8", new ArrayList<>(Arrays.asList("Becker")), "Sporthalle", fächer.get(9));
 
-        //Objekte Unterrichtsstunden Mittwoch
-        Unterrichtsstunde m1 = new Unterrichtsstunde("1", new ArrayList<>(){"Schaub"}, "R25", fächer.get(11));
-        Unterrichtsstunde m2 = new Unterrichtsstunde("2", new ArrayList<>(){"Schaub"}, "R25", fächer.get(11));
-        Unterrichtsstunde m3 = new Unterrichtsstunde("3", new ArrayList<>(){"Schaum"}, "R040", fächer.get(1));
-        Unterrichtsstunde m4 = new Unterrichtsstunde("4", new ArrayList<>(){"Schaum"}, "R040", fächer.get(2));
+//Objekte Unterrichtsstunden Mittwoch
+        Unterrichtsstunde mi5 = new Unterrichtsstunde("1", new ArrayList<>(Arrays.asList("Schaub")), "R25", fächer.get(10));
+        Unterrichtsstunde mi6 = new Unterrichtsstunde("2", new ArrayList<>(Arrays.asList("Schaub")), "R25", fächer.get(10));
+        Unterrichtsstunde mi7 = new Unterrichtsstunde("3", new ArrayList<>(Arrays.asList("Schaum")), "R040", fächer.get(12));
+        Unterrichtsstunde mi8 = new Unterrichtsstunde("4", new ArrayList<>(Arrays.asList("Schaum")), "R040", fächer.get(12));
 
-        //Objekte Unterrichtsstunden Donnerstag
-        Unterrichtsstunde d1 = new Unterrichtsstunde("1", new ArrayList<>(Arrays.asList("Penschinski")), "A010", fächer.get(2));
-        Unterrichtsstunde d2 = new Unterrichtsstunde("2", new ArrayList<>(){"Penschinski"}, "A010", fächer.get(2));
-        Unterrichtsstunde d3 = new Unterrichtsstunde("3", new ArrayList<>(){"Penschinski"}, "A010", fächer.get(2));
-        Unterrichtsstunde d4 = new Unterrichtsstunde("4", new ArrayList<>(){"Penschinski"}, "A010", fächer.get(2));
-        Unterrichtsstunde d5 = new Unterrichtsstunde("5", new ArrayList<>(){"Bledau"}, "D010", fächer.get(9));
-        Unterrichtsstunde d6 = new Unterrichtsstunde("6", new ArrayList<>(){"Bledau"}, "D010", fächer.get(9));
-        Unterrichtsstunde d7 = new Unterrichtsstunde("7", new ArrayList<>(){"Harth"}, "A010", fächer.get(0));
-        Unterrichtsstunde d8 = new Unterrichtsstunde("8", new ArrayList<>(){"Harth"}, "A010", fächer.get(0));
-        Unterrichtsstunde d9 = new Unterrichtsstunde("9", new ArrayList<>(){"Watolla"}, "DS Raum", fächer.get(20));
-        Unterrichtsstunde d10 = new Unterrichtsstunde("10", new ArrayList<>(){"Watolla"}, "DS Raum", fächer.get(20));
+//Objekte Unterrichtsstunden Donnerstag
+        Unterrichtsstunde do1 = new Unterrichtsstunde("1", new ArrayList<>(Arrays.asList("Penschinski")), "A010", fächer.get(1));
+        Unterrichtsstunde do2 = new Unterrichtsstunde("2", new ArrayList<>(Arrays.asList("Penschinski")), "A010", fächer.get(1));
+        Unterrichtsstunde do3 = new Unterrichtsstunde("3", new ArrayList<>(Arrays.asList("Penschinski")), "A010", fächer.get(1));
+        Unterrichtsstunde do4 = new Unterrichtsstunde("4", new ArrayList<>(Arrays.asList("Penschinski")), "A010", fächer.get(1));
+        Unterrichtsstunde do5 = new Unterrichtsstunde("5", new ArrayList<>(Arrays.asList("Bledau")), "D010", fächer.get(8));
+        Unterrichtsstunde do6 = new Unterrichtsstunde("6", new ArrayList<>(Arrays.asList("Bledau")), "D010", fächer.get(8));
+        Unterrichtsstunde do7 = new Unterrichtsstunde("7", new ArrayList<>(Arrays.asList("Harth")), "A010", fächer.get(0));
+        Unterrichtsstunde do8 = new Unterrichtsstunde("8", new ArrayList<>(Arrays.asList("Harth")), "A010", fächer.get(0));
+        Unterrichtsstunde do9 = new Unterrichtsstunde("9", new ArrayList<>(Arrays.asList("Watolla")), "DS Raum", fächer.get(20));
+        Unterrichtsstunde do10 = new Unterrichtsstunde("10", new ArrayList<>(Arrays.asList("Watolla")), "DS Raum", fächer.get(20));
 
-        //Objekte Unterrichtsstunden Freitag
-        Unterrichtsstunde f1 = new Unterrichtsstunde("1", new ArrayList<>(Arrays.asList("Engel")), "U040", fächer.get(4));
-        Unterrichtsstunde f2 = new Unterrichtsstunde("2", new ArrayList<>(){"Engel"}, "U040", fächer.get(4));
-        Unterrichtsstunde f3 = new Unterrichtsstunde("3", new ArrayList<>(){"Schmidt"}, "U040", fächer.get(2));
-        Unterrichtsstunde f4 = new Unterrichtsstunde("4", new ArrayList<>(){"Schmidt"}, "U040", fächer.get(2));
-        Unterrichtsstunde f5 = new Unterrichtsstunde("5", new ArrayList<>(){"Aldudak"}, "R040", fächer.get(7));
-        Unterrichtsstunde f6 = new Unterrichtsstunde("6", new ArrayList<>(){"Aldudak"}, "R040", fächer.get(7));
-        Unterrichtsstunde f7 = new Unterrichtsstunde("7", new ArrayList<>(){"Schaum"}, "R040", fächer.get(10));
-        Unterrichtsstunde f8 = new Unterrichtsstunde("8", new ArrayList<>(){"Schaum"}, "R040", fächer.get(10));
+//Objekte Unterrichtsstunden Freitag
+        Unterrichtsstunde fr1 = new Unterrichtsstunde("1", new ArrayList<>(Arrays.asList("Engel")), "U040", fächer.get(11));
+        Unterrichtsstunde fr2 = new Unterrichtsstunde("2", new ArrayList<>(Arrays.asList("Engel")), "U040", fächer.get(11));
+        Unterrichtsstunde fr3 = new Unterrichtsstunde("3", new ArrayList<>(Arrays.asList("Schmidt")), "U040", fächer.get(14));
+        Unterrichtsstunde fr4 = new Unterrichtsstunde("4", new ArrayList<>(Arrays.asList("Schmidt")), "U040", fächer.get(14));
+        Unterrichtsstunde fr5 = new Unterrichtsstunde("5", new ArrayList<>(Arrays.asList("Aldudak")), "R040", fächer.get(2));
+        Unterrichtsstunde fr6 = new Unterrichtsstunde("6", new ArrayList<>(Arrays.asList("Aldudak")), "R040", fächer.get(2));
+        Unterrichtsstunde fr7 = new Unterrichtsstunde("7", new ArrayList<>(Arrays.asList("Schaum")), "R040", fächer.get(12));
+        Unterrichtsstunde fr8 = new Unterrichtsstunde("8", new ArrayList<>(Arrays.asList("Schaum")), "R040", fächer.get(12));
 
         //Schultage
-        Schultag mo1 = new Schultag("Montag", new ArrayList<>(Arrays.asList(m1, m2, m3, m4, m5, m6)));
-        Schultag di1 = new Schultag("Montag", new ArrayList<>(Arrays.asList(m1, m2, m3, m4, m5, m6)));
-        Schultag mi3 = new Schultag("Montag", new ArrayList<>(Arrays.asList(m1, m2, m3, m4, m5, m6)));
-        Schultag do4 = new Schultag("Montag", new ArrayList<>(Arrays.asList(m1, m2, m3, m4, m5, m6)));
-        Schultag fr5 = new Schultag("Montag", new ArrayList<>(Arrays.asList(m1, m2, m3, m4, m5, m6)));
+        Schultag montag1 = new Schultag("Montag", new ArrayList<>(Arrays.asList(mo1, mo2, mo3, mo4, mo5, mo6)));
+        Schultag dienstag1 = new Schultag("Dienstag", new ArrayList<>(Arrays.asList(di1, di2, di3, di4, di5, di6, di7, di8)));
+        Schultag mittwoch1 = new Schultag("Mittwoch", new ArrayList<>(Arrays.asList(mi5, mi6, mi7, mi8)));
+        Schultag donnerstag1 = new Schultag("Donnerstag", new ArrayList<>(Arrays.asList(do1, do2, do3, do4, do5, do6, do7, do8, do9, do10)));
+        Schultag freitag1 = new Schultag("Freitag", new ArrayList<>(Arrays.asList(fr1, fr2, fr3, fr4, fr5, fr6)));
 
         //Schulwochen
-        Schulwoche sw1 = new Schulwoche("mo1, di1, mi1, do1, fr1");
-        Schulwoche sw2 = new Schulwoche("mo2, di2, mi2, do2, fr2");
+        Schulwoche sw1 = new Schulwoche(new Schultag[] {montag1, dienstag1, mittwoch1, donnerstag1, freitag1, new Schultag("Samstag"), new Schultag("Sonntag")});
+        Schulwoche sw2 = new Schulwoche(new Schultag[] {montag1, dienstag1, mittwoch1, donnerstag1, freitag1, new Schultag("Samstag"), new Schultag("Sonntag")});
 
-
+        Stundenplan stundenplan = new Stundenplan("TLS Stundenplan Jannis", sw1, sw2);
+        return stundenplan;
 
     }
 }

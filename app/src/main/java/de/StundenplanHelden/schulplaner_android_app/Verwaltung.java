@@ -89,6 +89,14 @@ public class Verwaltung {
         this.stundenplan = neuerStundenplan;
         return neuerStundenplan;
     }
+    public Stundenplan neuerStundenplan(Stundenplan neuerStundenplan){
+        this.stundenplan = neuerStundenplan;
+        return this.stundenplan;
+    }
+    public ArrayList<Fach> neueFächer(ArrayList<Fach> neueFächer){
+        this.fächer = neueFächer;
+        return this.fächer;
+    }
 
 
     //Importiert mit einem Path einen JSON File zu einem Stundenplan. Bei erfolgreicher Konvertierung wird der Stundenplan von Verwaltung mit dem importierten Stundenplan überschrieben
@@ -159,8 +167,6 @@ public class Verwaltung {
         avg = fach.berechneFachDurchschnitt(halbjahr, endHalbjahr);
         return avg;
     }
-
-
 
     //Methoden die Datensätze als String (JSON) generieren, die bei Erstinstallation der App aufgerfufen werden, um Beispieldatensätze zu integrieren
     public String erstelleBeispielNutzerJSON(){
