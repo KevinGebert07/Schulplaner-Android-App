@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="zurück"
-                android:textSize="10dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/Datum"
@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Montag, der 48.14.20025"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/next"
@@ -46,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="vor"
-                android:textSize="10dp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <ScrollView

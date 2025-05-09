@@ -50,6 +50,7 @@ public class Fach {
         return avg;
     }
 
+
     @Override
     public String toString(){
         return "Ich bin "+ bezeichnung;
