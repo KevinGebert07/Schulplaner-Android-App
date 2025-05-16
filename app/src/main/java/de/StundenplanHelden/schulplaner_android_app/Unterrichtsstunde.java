@@ -2,6 +2,7 @@ package de.StundenplanHelden.schulplaner_android_app;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Unterrichtsstunde {
     protected String stunde;
