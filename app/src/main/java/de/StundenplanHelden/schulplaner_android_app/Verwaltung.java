@@ -63,6 +63,7 @@ public class Verwaltung {
 
         //Wenn count >= 0 avg durch count teilen -> Durchschnitt, ohne dass durch 0 geteilt wird
         if (count != 0){avg = avg / count;}
+        else {avg = -1.0;}
         return avg;
     }
 
@@ -82,6 +83,14 @@ public class Verwaltung {
         Files.write(Paths.get(path), bytes);
     }
 
+    public static Fach getFach(String bezeichnung){
+        for (Fach fach : getInstance().fächer){
+            if (fach.bezeichnung.equalsIgnoreCase(bezeichnung)){
+                return fach;
+            }
+        }
+        return new Fach("FEHLER", Color.RED);
+    }
 
     //Public Methoden, die über das Singleton Objekt ausgeführt werden
     public Stundenplan neuerStundenplan(String bezeichnung, Schulwoche sw1, Schulwoche sw2){
@@ -122,12 +131,15 @@ public class Verwaltung {
     //Diese Methode berechnet den Gesamtdurchschnitt aller eingetragenen Noten
     public double berechneGesamtdurchschnitt (){
         double avg = 0.0;
+
         //Zuerst die Durchschnittsnoten von allen Fächern berechnen
         double[] fächerAVG = new double[fächer.size()];
         for (int i = 0; i<fächer.size(); i++){
             fächerAVG[i] = fächer.get(i).berechneFachDurchschnitt();
+            Log.e("FETT", i+": "+fächerAVG[i] + " ; "+fächer.get(i));
         }
         avg = Verwaltung.berechneDurchschnittPositiv(fächerAVG);
+        Log.e("FETT", "Avg: " + avg);
         return avg;
     }
 

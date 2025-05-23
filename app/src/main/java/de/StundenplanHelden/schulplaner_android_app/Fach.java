@@ -1,6 +1,8 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
-public class Fach {
+import java.io.Serializable;
+
+public class Fach implements Serializable {
     protected String bezeichnung;
     protected int farbe;
     protected Halbjahr[] halbjahre;
@@ -21,7 +23,7 @@ public class Fach {
 
     //Methoden zur Berechnung des Fachdurchschnitts, gesamt, von einem bestimmten Halbjahr und von mehreren bestimmten Halbjahren
     public double berechneFachDurchschnitt (){
-        double avg = 0.0;
+        double avg = -1.0;
         avg = Verwaltung.berechneDurchschnittPositiv(new double[] {
                 halbjahre[0].durchSchnittBerechnen(),
                 halbjahre[1].durchSchnittBerechnen(),
@@ -30,6 +32,7 @@ public class Fach {
                 halbjahre[4].durchSchnittBerechnen(),
                 halbjahre[5].durchSchnittBerechnen()}
         );
+        if (avg == 0){ avg=-1.0;}
         return avg;
     }
     public double berechneFachDurchschnitt(int halbjahr){
@@ -37,10 +40,10 @@ public class Fach {
         avg = halbjahre[halbjahr].durchSchnittBerechnen();
         return avg;
     }
-    public double berechneFachDurchschnitt(int halbjahrStart, int halbJahrEnd){
+    public double berechneFachDurchschnitt(int halbjahrStart, int halbJahrEnd) {
         double avg = 0.0;
         int count = 0;
-        for (int i = halbjahrStart; i <= halbJahrEnd; i++){
+        for (int i = halbjahrStart; i <= halbJahrEnd; i++) {
             avg += halbjahre[i].durchSchnittBerechnen();
             count++;
         }
@@ -49,7 +52,6 @@ public class Fach {
         }
         return avg;
     }
-
 
     @Override
     public String toString(){

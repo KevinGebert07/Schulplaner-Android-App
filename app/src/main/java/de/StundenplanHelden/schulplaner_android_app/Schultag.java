@@ -16,7 +16,12 @@ public class Schultag {
     }
 
     public void unterrichtsstundeEinfügen(int position, Unterrichtsstunde unterrichtsstunde){
-        unterrichtsstunden.add(position, unterrichtsstunde);
+        if (unterrichtsstunden.size() <= position){
+            unterrichtsstunden.add(position, unterrichtsstunde);
+        }
+        else {
+            unterrichtsstunden.set(position, unterrichtsstunde);
+        }
     }
 
     public String getWochentag(){

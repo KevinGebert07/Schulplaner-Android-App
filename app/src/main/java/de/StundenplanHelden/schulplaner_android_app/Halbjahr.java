@@ -19,13 +19,13 @@ public class Halbjahr {
 
     public void noteEintragen (int position, int notenpunkte){
         switch (position) {
-            case 1:
+            case 0:
                 klausur1 = notenpunkte;
                 break;
-            case 2:
+            case 1:
                 klausur2 = notenpunkte;
                 break;
-            case 3:
+            case 2:
                 mündlich = notenpunkte;
                 break;
         }

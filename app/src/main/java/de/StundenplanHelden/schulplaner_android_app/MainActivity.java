@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
         try {
             //verwaltung.stundenplan = gson.fromJson(Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.STUNDENPLAN_FILE_NAME, StandardCharsets.UTF_8), Stundenplan.class);
 
-            //String fächerJson = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME,StandardCharsets.UTF_8);
-            //Type listType = new TypeToken<List<Fach>>(){}.getType();
-            //List<Fach> fächer = gson.fromJson(fächerJson, listType);
-            //verwaltung.fächer = new ArrayList<>(fächer);
+            String fächerJson = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME,StandardCharsets.UTF_8);
+            Type listType = new TypeToken<List<Fach>>(){}.getType();
+            List<Fach> fächer = gson.fromJson(fächerJson, listType);
+            verwaltung.fächer = new ArrayList<>(fächer);
 
             verwaltung.neueFächer(tlsFächer());
-            verwaltung.neuerStundenplan(BGStundenplan.jannisStundenplan());
+            verwaltung.neuerStundenplan(BGStundenplan.BGStundenplan("meinStundenplan", true, 2, 0, true, true));
 
         } catch (Exception e) {
             Log.e("MainActivity", "Catch Data from JSON: "+ e);
@@ -94,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
         new Fach("Schulband", getResources().getColor(R.color.Schulband, null))
         ));
         Log.e("FATAL", "TLS Fächer erstellt:" + fächer.toString());
+
+        try{
+            Gson gson = new Gson();
+            String fächerJson = gson.toJson(fächer);
+            Verwaltung.writeFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME, fächerJson,  StandardCharsets.UTF_8);
+        }
+        catch (Exception e){
+            Log.e("JSON schreiben Fächer MainActivity", e.toString());
+        }
         return fächer;
     }
 
