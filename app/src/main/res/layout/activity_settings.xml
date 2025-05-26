@@ -7,12 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <Button
+        android:id="@+id/bearbeitenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Profil bearbeiten"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Einstellungen"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

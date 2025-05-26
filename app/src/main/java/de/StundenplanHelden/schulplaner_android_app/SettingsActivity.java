@@ -1,6 +1,8 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,14 @@ public class SettingsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button profileEditButton = (Button) findViewById(R.id.bearbeitenButton);
+        profileEditButton.setOnClickListener(v -> changeToProfileEditActivity());
+
+    }
+
+    private void changeToProfileEditActivity(){
+        Intent i = new Intent(this, EditProfileActivity.class);
+        startActivity(i);
     }
 }

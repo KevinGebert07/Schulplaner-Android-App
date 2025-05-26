@@ -7,35 +7,226 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
+    <!-- FragmentContainerView bleibt wie gehabt -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
         android:name="de.StundenplanHelden.schulplaner_android_app.Menueleiste"
         android:layout_width="400dp"
         android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/bearbeiten"
+    <!-- Button bleibt wie gehabt -->
+
+    <!-- Container für alle Felder -->
+    <LinearLayout
+        android:id="@+id/fields_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topText">
+
+        <!-- Vorname -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_vorname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vorname"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_vorname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Nachname -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_nachname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nachname"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_nachname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- E-Mail-Adresse -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Mail-Adresse"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Klassenlehrer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_klassenlehrer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Klassenlehrer"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_klassenlehrer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Klasse -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_klasse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Klasse"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_klasse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Schule -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_schule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Schule"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_schule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Geburtsdatum -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_geburtsdatum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Geburtsdatum"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_geburtsdatum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/topText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profil bearbeiten"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView2"
+        android:layout_marginTop="16dp"
+        android:text="Profil"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/Profiltext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bearbeiten" />
 </androidx.constraintlayout.widget.ConstraintLayout>

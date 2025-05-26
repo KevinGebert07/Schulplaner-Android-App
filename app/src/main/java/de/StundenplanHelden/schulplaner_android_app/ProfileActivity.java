@@ -1,11 +1,15 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
+import android.app.ComponentCaller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -13,11 +17,22 @@ import androidx.core.view.WindowInsetsCompat;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    TextView vntext;
+    TextView nntext;
+    TextView mailtext;
+    TextView klltext;
+    TextView kltext;
+    TextView schtext;
+    TextView gebtext;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +44,9 @@ public class ProfileActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button bearbeiten = (Button) findViewById(R.id.bearbeiten);
-        bearbeiten.setOnClickListener(v -> startActivity(new Intent(this, EditProfileActivity.class)));
         loadJSONProfil();
-
+        getTextViews();
+        setTextViews();
 
     }
 
@@ -73,5 +87,33 @@ public class ProfileActivity extends AppCompatActivity {
             Log.e("TAG", "getJSONProfil: " + e);
         }
         return nutzer;
+    }
+
+    private void getTextViews(){
+        vntext = (TextView) findViewById(R.id.text_vorname);
+        nntext = (TextView) findViewById(R.id.text_nachname);
+        mailtext = (TextView) findViewById(R.id.text_email);
+        klltext = (TextView) findViewById(R.id.text_klassenlehrer);
+        kltext = (TextView) findViewById(R.id.text_klasse);
+        schtext = (TextView) findViewById(R.id.text_schule);
+        gebtext = (TextView) findViewById(R.id.text_geburtsdatum);
+    }
+
+    private void setTextViews(){
+        Nutzer nutzer = Verwaltung.getInstance().nutzer;
+        vntext.setText(nutzer.getVorname());
+        nntext.setText(nutzer.getNachname());
+        mailtext.setText(nutzer.getEmail());
+        klltext.setText(nutzer.getKlassenlehrer());
+        kltext.setText(nutzer.getKlasse());
+        schtext.setText(nutzer.getSchule());
+        gebtext.setText(nutzer.getGebDate().toString());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Hier Daten aktualisieren oder UI refreshen
+        setTextViews();
     }
 }

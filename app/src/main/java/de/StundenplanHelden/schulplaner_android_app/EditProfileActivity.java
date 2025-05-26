@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.FileObserver;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -93,7 +94,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public Nutzer getEditTexts (){
-        EditText[] editTexts = new EditText[]{vorname, nachname, email, schule, klasse, klassenlehrer, geburtsdatum};
+        EditText[] editTexts = new EditText[]{vorname, nachname, email, klassenlehrer, klasse, schule, geburtsdatum};
         String[] contents = new String[7];
         int count = 0;
         for (EditText eText : editTexts){
@@ -120,5 +121,7 @@ public class EditProfileActivity extends AppCompatActivity {
         catch(Exception e){
             Log.e("saveNutzerChanges", "Error: "+e.toString());
         }
+        Verwaltung.getInstance().neuerNutzer(nutzer);
+        finish();
     }
 }
