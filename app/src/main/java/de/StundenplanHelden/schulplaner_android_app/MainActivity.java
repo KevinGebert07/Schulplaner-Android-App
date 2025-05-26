@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.ColorInt;
@@ -24,9 +25,12 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,18 +55,30 @@ public class MainActivity extends AppCompatActivity {
         try {
             //verwaltung.stundenplan = gson.fromJson(Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.STUNDENPLAN_FILE_NAME, StandardCharsets.UTF_8), Stundenplan.class);
 
+            verwaltung.neueFächer(tlsFächer());
+
             String fächerJson = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME,StandardCharsets.UTF_8);
             Type listType = new TypeToken<List<Fach>>(){}.getType();
-            List<Fach> fächer = gson.fromJson(fächerJson, listType);
-            verwaltung.fächer = new ArrayList<>(fächer);
+            ArrayList<Fach> fächer = gson.fromJson(fächerJson, listType);
+            verwaltung.neueFächer(fächer);
 
-            verwaltung.neueFächer(tlsFächer());
+            String nutzerJson = Verwaltung.readFile(getFilesDir().getPath()+Verwaltung.PROFILE_FILE_NAME, StandardCharsets.UTF_8);
+            verwaltung.neuerNutzer(gson.fromJson(nutzerJson, Nutzer.class));
+
+
             verwaltung.neuerStundenplan(BGStundenplan.BGStundenplan("meinStundenplan", true, 2, 0, true, true));
-
+            Log.e("MainActivity", "Fächer und Stundenplan geladen");
         } catch (Exception e) {
             Log.e("MainActivity", "Catch Data from JSON: "+ e);
         }
 
+        TextView hallo = (TextView) findViewById(R.id.hallo);
+        hallo.setText("Willkommen\n" + verwaltung.nutzer.getVorname());
+
+        TextView datetime = (TextView) findViewById(R.id.time);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy\n\nHH.mm", Locale.getDefault());
+        String currentDateTime = Datum.berechneWochentag(Datum.Heute())+", der \n"+sdf.format(new Date())+"\nUhrzeit";
+        datetime.setText(currentDateTime);
     }
 
     public ArrayList<Fach> tlsFächer(){

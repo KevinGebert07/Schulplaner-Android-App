@@ -34,7 +34,7 @@ public class Verwaltung {
 
     //Konstruktor
     private Verwaltung(){
-        fächer = new ArrayList<>();
+
     }
     //Singleton Instanz bekommen
     public static Verwaltung getInstance(){
@@ -107,6 +107,10 @@ public class Verwaltung {
         return this.fächer;
     }
 
+    public Nutzer neuerNutzer (Nutzer neuerNutzer){
+        this.nutzer = neuerNutzer;
+        return nutzer;
+    }
 
     //Importiert mit einem Path einen JSON File zu einem Stundenplan. Bei erfolgreicher Konvertierung wird der Stundenplan von Verwaltung mit dem importierten Stundenplan überschrieben
     public boolean importiereStundenplan(String path){
@@ -184,28 +188,13 @@ public class Verwaltung {
     public String erstelleBeispielNutzerJSON(){
         //Erstellt einen Beispielnutzer der beim Starten der App als JSON gespeichert wird
         Nutzer nutzer = new Nutzer("Max","Mustermann","max.mustermann@musterdomain.com", "Herr Lehrer", "11a", "Musterschule 12345 Musterhausen",new Datum(1,1,2000));
+        this.nutzer = nutzer;
         Gson gson = new Gson();
         return gson.toJson(nutzer);
     }
     public String erstelleBeispielFächerJSON(){
-        Log.e("Fatal", "FATAL Fächer creating");
-        //Erstelle drei Beispielfächer, die beim Starten der APP als JSON gespeichert werden
-        Fach deutsch = new Fach("Deutsch", Color.RED);
-        Fach mathe = new Fach("Mathe", Color.BLUE);
-        Fach englisch = new Fach("Englisch", Color.YELLOW);
-
-        getInstance().fächer.add( deutsch);
-        getInstance().fächer.add( mathe);
-        getInstance().fächer.add( englisch);
-
-
-        Gson gson = new Gson();
-        List<Fach> fächerList = fächer;
-        String json = gson.toJson(fächerList);
-
-        Log.e("Fatal", "FATAL Fächer created");
-
-        return json;
+        //NIcht benötigt
+        return "";
     }
     public String erstelleBeispielStundenplanJSON(){
         ArrayList<Unterrichtsstunde> unterrichtsstunden = new ArrayList<>();
