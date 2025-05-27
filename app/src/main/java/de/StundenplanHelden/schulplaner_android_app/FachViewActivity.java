@@ -161,9 +161,11 @@ public class FachViewActivity extends AppCompatActivity {
                 int note = Integer.valueOf(editTextList.get(i).getText().toString());
                 if (note > 15){
                     note = 15;
+                    editTextList.get(i).setText("15");
                 }
                 if (note >= 0) {
                     fach.halbjahre[flipper.getDisplayedChild()].noteEintragen(i, note);
+
                 }
             }
             catch(Exception ignored) {
@@ -173,6 +175,7 @@ public class FachViewActivity extends AppCompatActivity {
     }
 
     private void changeToGradesActivity(){
+        notenAktualisieren();
         Intent i = new Intent(this, GradesActivity.class);
         try{
             Gson gson = new Gson();

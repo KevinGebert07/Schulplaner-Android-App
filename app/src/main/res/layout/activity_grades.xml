@@ -142,12 +142,16 @@
             </LinearLayout>
         </ScrollView>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView4"
-            android:name="de.StundenplanHelden.schulplaner_android_app.Menueleiste"
-            android:layout_width="400dp"
-            android:layout_height="100dp" />
-
     </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView4"
+        android:name="de.StundenplanHelden.schulplaner_android_app.Menueleiste"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
