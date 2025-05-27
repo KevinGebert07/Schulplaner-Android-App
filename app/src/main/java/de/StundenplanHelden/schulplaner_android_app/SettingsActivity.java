@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import android.net.Uri;
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
@@ -26,10 +28,23 @@ public class SettingsActivity extends AppCompatActivity {
         Button profileEditButton = (Button) findViewById(R.id.bearbeitenButton);
         profileEditButton.setOnClickListener(v -> changeToProfileEditActivity());
 
+        Button emailButton = (Button) findViewById(R.id.emailButton);
+        emailButton.setOnClickListener(v -> sendToEmail());
     }
 
     private void changeToProfileEditActivity(){
         Intent i = new Intent(this, EditProfileActivity.class);
         startActivity(i);
+    }
+
+    private void sendToEmail(){
+        String email = "jannismila@gmail.de";
+        String subject = "Verbesserungsvorschlag Schulplaner Android App";
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:" + email + "?subject=" + Uri.encode(subject)));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+        startActivity(intent);
     }
 }
