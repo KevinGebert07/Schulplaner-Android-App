@@ -161,6 +161,9 @@ public class GradesActivity extends AppCompatActivity {
     }
 
     private void setNotenText(double notenavg){
+        if (notenavg == -1){
+            notenavg = 0.0;
+        }
         try {
             String text = String.format("%.2f", notenavg);
             notenText.setText(text);
