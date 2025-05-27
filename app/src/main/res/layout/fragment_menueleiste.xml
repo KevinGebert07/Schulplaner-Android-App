@@ -28,9 +28,10 @@
     <Button
         android:id="@+id/profil"
         android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:layout_weight="1"
-        android:text="KEK" />
+        android:layout_height="80sp"
+        android:layout_weight="0.9"
+        android:text="PROFIL"
+        android:textSize="12sp" />
 
     <ImageView
         android:id="@+id/grades"

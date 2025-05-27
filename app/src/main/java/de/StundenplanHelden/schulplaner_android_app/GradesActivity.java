@@ -26,6 +26,7 @@ public class GradesActivity extends AppCompatActivity {
     private int idCount;
     private TextView notenText;
     private Verwaltung verwaltung;
+    private CheckBox[] checkBoxes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +41,16 @@ public class GradesActivity extends AppCompatActivity {
 
         //Werte setzen
         verwaltung = Verwaltung.getInstance();
+        checkBoxes = new CheckBox[]{findViewById(R.id.checkbox_e1),findViewById(R.id.checkbox_e2),findViewById(R.id.checkbox_q1),findViewById(R.id.checkbox_q2),findViewById(R.id.checkbox_q3),findViewById(R.id.checkbox_q4)};
         IDs = new HashMap<>();
         idCount = 0;
         notenText = (TextView) findViewById(R.id.notendurchschnitt);
 
         ArrayList<Fach> fächer = Verwaltung.getInstance().fächer;
+
+        for (CheckBox cb : checkBoxes){
+            cb.setOnClickListener(v -> OnCheckBoxClick());
+        }
 
         //Für die Anzahl der Fächer Felder mit Checkbox und Button einfügen
         for (int i = 0; i < fächer.size(); i++){
@@ -57,7 +63,14 @@ public class GradesActivity extends AppCompatActivity {
             btn.setText(fächer.get(i).bezeichnung);
             btn.setBackgroundColor(fächer.get(i).farbe);
         }
-        notenText.setText(String.valueOf(verwaltung.berechneGesamtdurchschnitt()));
+
+        //Gesamtdurchschnitt setzen
+        setNotenText(verwaltung.berechneGesamtdurchschnitt());
+
+        //Set OnClickListener
+        for (CheckBox cb : checkBoxes){
+            cb.setOnClickListener(v -> OnCheckBoxClick());
+        }
     }
 
 
@@ -97,5 +110,63 @@ public class GradesActivity extends AppCompatActivity {
         i.putExtra("fach", ((Button) v).getText().toString());
         Toast.makeText(this, (((Button) v).getText()).toString(), Toast.LENGTH_SHORT).show();
         startActivity(i);
+    }
+
+    private void OnCheckBoxClick(){
+        //Update Notendurchschnitt
+        double displayDurchschnitt = 0.0;
+
+        boolean[] bools = new boolean[6];
+        int yesNo = 0;
+        for (int i = 0; i<6; i++){
+            if (checkBoxes[i].isChecked()){
+                bools[i] = true;
+                yesNo++;
+            }
+            else{
+                bools[i] = false;
+                yesNo--;
+            }
+        }
+        if (yesNo == -6){
+            //Wenn alle Checkboxes leer
+            displayDurchschnitt = verwaltung.berechneGesamtdurchschnitt();
+        }
+        else{
+            int last = 0;
+            int first = 0;
+
+            //Ermittelt das erste Häkchen
+            for (int i = 0; i < 6; i++){
+                if (bools[i] == true){
+                    first = i;
+                    break;
+                }
+            }
+            //Ermittelt das letzte Häkchen
+            for (int i = 0; i < 6; i++){
+                if (bools[i] == true){
+                    last = i;
+                }
+            }
+
+            //Checkboxes markieren zwischen Start und End
+            for (int i = first; i<last; i++){
+                checkBoxes[i].setChecked(true);
+            }
+
+            displayDurchschnitt = verwaltung.berechneDurchschnitt(first, last);
+        }
+        setNotenText(displayDurchschnitt);
+    }
+
+    private void setNotenText(double notenavg){
+        try {
+            String text = String.format("%.2f", notenavg);
+            notenText.setText(text);
+        }
+        catch (Exception e){
+
+        }
     }
 }
