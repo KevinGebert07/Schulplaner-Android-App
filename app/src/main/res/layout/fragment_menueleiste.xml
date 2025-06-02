@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
-        android:src="@drawable/stundenplan_ikon_grau" />
+        android:src="@drawable/stundenplanikon_blau" />
 
     <ImageView
         android:id="@+id/tasks"
@@ -20,10 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:src="@drawable/aufgaben_ikon_grau"
-        android:translationY="-18dp" />
+        android:src="@drawable/aufgabensymbol_blau" />
 
     <Button
         android:id="@+id/profil"
@@ -39,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
-        android:src="@drawable/noten_ikon_grau"
+        android:src="@drawable/notenikon_blau"
         android:translationY="-5dp" />
 
     <ImageView
@@ -49,6 +46,6 @@
         android:layout_weight="1"
         android:clickable="true"
         android:onClick="changeToSettiings"
-        android:src="@drawable/rad_ikon_grau" />
+        android:src="@drawable/radikon_blau" />
 
 </LinearLayout>

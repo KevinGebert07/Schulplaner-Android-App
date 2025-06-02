@@ -1,5 +1,6 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
+import android.app.ComponentCaller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,14 +12,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.gson.Gson;
+
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class GradesActivity extends AppCompatActivity {
 
@@ -38,6 +45,8 @@ public class GradesActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        saveFächer();
 
         //Werte setzen
         verwaltung = Verwaltung.getInstance();
@@ -67,7 +76,7 @@ public class GradesActivity extends AppCompatActivity {
         //Gesamtdurchschnitt setzen
         setNotenText(verwaltung.berechneGesamtdurchschnitt());
 
-        //Set OnClickListener
+        //Set OnClickListener bei den Checkboxes
         for (CheckBox cb : checkBoxes){
             cb.setOnClickListener(v -> OnCheckBoxClick());
         }
@@ -169,6 +178,21 @@ public class GradesActivity extends AppCompatActivity {
             notenText.setText(text);
         }
         catch (Exception e){
+
+        }
+    }
+
+
+
+    private void saveFächer(){
+        Gson gson = new Gson();
+        List<Fach> updateFächer = Verwaltung.getInstance().fächer;
+        String fächerText = gson.toJson(updateFächer);
+
+        try{
+            Verwaltung.writeFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME, fächerText ,StandardCharsets.UTF_8);
+        }
+        catch(Exception e){
 
         }
     }

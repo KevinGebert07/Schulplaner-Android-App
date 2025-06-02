@@ -35,11 +35,15 @@ public class Fach implements Serializable {
         if (avg == 0){ avg=-1.0;}
         return avg;
     }
+
+    //Berechnet den Durchschnitt des Fach-Objektes in einem bestimmten Halbjahr und gibt diesen zurück
     public double berechneFachDurchschnitt(int halbjahr){
         double avg = 0.0;
         avg = halbjahre[halbjahr].durchSchnittBerechnen();
         return avg;
     }
+
+    //Berechnet den Durchschnitt des Fach-Objektes für einen Bereich von Halbjahren und gibt diesen zurück
     public double berechneFachDurchschnitt(int halbjahrStart, int halbJahrEnd) {
         double avg = 0.0;
         int count = 0;

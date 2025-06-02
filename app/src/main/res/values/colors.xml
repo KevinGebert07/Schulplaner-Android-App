@@ -29,4 +29,6 @@
     <color name="SoftwareEngineering">#48D1CC</color>
     <color name="Elektrotechnik">#8B0000</color>
     <color name="Spanisch">#BE5103</color>
+    <color name="IconsBlau">#0059C9</color>
+    <color name="IconsGrau">#272727</color>
 </resources>

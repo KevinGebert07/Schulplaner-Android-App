@@ -3,19 +3,15 @@ package de.StundenplanHelden.schulplaner_android_app;
 import android.graphics.Color;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Verwaltung {
     //Singleton Aufbau
@@ -25,6 +21,7 @@ public class Verwaltung {
     protected Nutzer nutzer;
     protected Stundenplan stundenplan;
     protected ArrayList<Fach> fächer;
+    protected boolean styleGray = false;
 
 
     //Finale Attribute (z.B. Filenames)
@@ -53,7 +50,7 @@ public class Verwaltung {
         double avg = 0.0;
         int count = 0;
 
-        //Jeden Wert der nicht negativ ist zu avg hinzufügen; dann count erhöhen
+        //Jeden Wert der nicht negativ ist zu avg hinzufügen; count erhöhen
         for (double wert : werte){
             if (wert >= 0){
                 avg+=wert;
@@ -64,6 +61,7 @@ public class Verwaltung {
         //Wenn count >= 0 avg durch count teilen -> Durchschnitt, ohne dass durch 0 geteilt wird
         if (count != 0){avg = avg / count;}
         else {avg = -1.0;}
+        //Zur Sicherheit -1 zurückgeben, wenn keine werte leer ist um zwischen 0 und keine Werte zu unterscheiden
         return avg;
     }
 
@@ -140,15 +138,17 @@ public class Verwaltung {
         double[] fächerAVG = new double[fächer.size()];
         for (int i = 0; i<fächer.size(); i++){
             fächerAVG[i] = fächer.get(i).berechneFachDurchschnitt();
-            Log.e("FETT", i+": "+fächerAVG[i] + " ; "+fächer.get(i));
         }
         avg = Verwaltung.berechneDurchschnittPositiv(fächerAVG);
         Log.e("FETT", "Avg: " + avg);
         return avg;
     }
 
-    //Diese Methoden berechnen den Durchschnitt von allen Fächer in einem bestimmten oder von mehreren bestimmten Halbjahren
+    //Diese Methoden berechnen den Durchschnitt von allen Fächer in einem bestimmten Halbjahr
+    //Halbjahr = 0 entspricht E1; Halbjahr = 5 entspricht Q4
     public double berechneDurchschnitt (int halbjahr){
+        //double anlegen als Endergebnis
+        //double Array anlegen für alle Fächerdurchschnitte
         double avg = 0.0;
         double[] fächerAVG = new double[fächer.size()];
         for (int i = 0; i<fächer.size(); i++){
@@ -157,6 +157,8 @@ public class Verwaltung {
         avg = Verwaltung.berechneDurchschnittPositiv(fächerAVG);
         return avg;
     }
+
+    //Diese Methode berechnet den Durchschnitt von allen Fächern für einen Bereich von Halbjahren
     public double berechneDurchschnitt (int halbjahr, int endHalbjahr){
         double avg = 0.0;
         double[] fächerAVG = new double[fächer.size()];

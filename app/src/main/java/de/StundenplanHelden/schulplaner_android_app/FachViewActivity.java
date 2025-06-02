@@ -97,7 +97,6 @@ public class FachViewActivity extends AppCompatActivity {
         }
         editFlipperTexts();
     }
-
     private void showPrevious(){
         notenAktualisieren();
         flipper.showPrevious();
@@ -165,7 +164,6 @@ public class FachViewActivity extends AppCompatActivity {
                 }
                 if (note >= 0) {
                     fach.halbjahre[flipper.getDisplayedChild()].noteEintragen(i, note);
-
                 }
             }
             catch(Exception ignored) {
@@ -176,15 +174,17 @@ public class FachViewActivity extends AppCompatActivity {
 
     private void changeToGradesActivity(){
         notenAktualisieren();
-        Intent i = new Intent(this, GradesActivity.class);
         try{
             Gson gson = new Gson();
-            String fächerJSON = gson.toJson(Verwaltung.getInstance().fächer);
+            List<Fach> fächerUpdate = Verwaltung.getInstance().fächer;
+            String fächerJSON = gson.toJson(fächerUpdate);
             Verwaltung.writeFile(getFilesDir().getPath()+Verwaltung.FÄCHER_FILE_NAME, fächerJSON, StandardCharsets.UTF_8);
         }
         catch (Exception e){
             Log.e("changeToGradesActivity", e.toString());
         }
-        startActivity(i);
+        finish();
     }
+
+
 }

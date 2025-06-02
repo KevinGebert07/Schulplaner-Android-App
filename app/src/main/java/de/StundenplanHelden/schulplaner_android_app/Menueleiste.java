@@ -1,6 +1,7 @@
 package de.StundenplanHelden.schulplaner_android_app;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -56,7 +57,6 @@ public class Menueleiste extends Fragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     //Methode wird beim Laden der Activity, in dem das Fragment ist ausgelöst
@@ -71,6 +71,24 @@ public class Menueleiste extends Fragment{
         ImageView grades = (ImageView) view.findViewById(R.id.grades);
         ImageView settings = (ImageView) view.findViewById(R.id.settings);
         Button profile = (Button) view.findViewById(R.id.profil);
+
+        //Setzen der Images, wenn grauer Style ausgewählt
+        if (Verwaltung.getInstance().styleGray){
+            timetable.setImageResource(R.drawable.stundenplanikon_grau);
+            tasks.setImageResource(R.drawable.aufgabensymbol_grau);
+            grades.setImageResource(R.drawable.notenikon_grau);
+            settings.setImageResource(R.drawable.radikon_grau);
+            profile.setBackgroundColor(getResources().getColor(R.color.IconsGrau));
+        }
+        //Setzen der Images, wenn blauer Style ausgewählt
+        else{
+            timetable.setImageResource(R.drawable.stundenplanikon_blau);
+            tasks.setImageResource(R.drawable.aufgabensymbol_blau);
+            grades.setImageResource(R.drawable.notenikon_blau);
+            settings.setImageResource(R.drawable.radikon_blau);
+            profile.setBackgroundColor(getResources().getColor(R.color.IconsBlau));
+        }
+
 
         //Setzen der OnClickListener der Buttons zum Wechseln der Activity
         timetable.setOnClickListener(v -> startActivity(new Intent(getActivity(), TimetableActivity.class)));
